@@ -26,7 +26,7 @@ class PHPGruenbeck {
      * Der User-Agent für API-Anfragen
      * @var string
      */
-    private $userAgent = 'ioBroker 41';
+    private $userAgent = 'Symcon';
     
     /**
      * Der Benutzername für myGruenbeck
