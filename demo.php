@@ -1,7 +1,7 @@
 <?php
 require_once 'PHPGruenbeck.class.php';
 
-$gruenbeck = new PHPGruenbeck('myuser@email.mail', 'MyPassword');
+$gruenbeck = new PHPGruenbeck('mein_benutzername', 'mein_password');
 $tokenFile = 'gruenbeck_tokens.json';
 
 // Versuche zuerst, Token aus Datei zu laden
