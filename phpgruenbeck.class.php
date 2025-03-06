@@ -6,7 +6,8 @@
  * Authentifizierung und Code Challenge. Sie bietet Funktionen zum Abrufen 
  * von Gerätedaten und zum regelmäßigen Pollen der API.
  * 
- * @version 1.3
+ * 
+ * @version 1.4
  * @license MIT
  */
 class PHPGruenbeck {
@@ -26,7 +27,7 @@ class PHPGruenbeck {
      * Der User-Agent für API-Anfragen
      * @var string
      */
-    private $userAgent = 'Symcon';
+    private $userAgent = 'ioBroker 41';
     
     /**
      * Der Benutzername für myGruenbeck
@@ -136,7 +137,7 @@ class PHPGruenbeck {
     
     /**
      * Lädt die Beschreibungen für Parameter
-     * Die vollständige Liste kann aus der descriptions.js-Datei importiert werden
+     * Die vollständige Liste aus der descriptions.js-Datei
      */
     private function loadDescriptions() {
         $this->descriptions = [
@@ -156,7 +157,113 @@ class PHPGruenbeck {
             'itimezone' => '[h] Current time zone',
             'itype' => 'System type',
             'iurlcloud1' => 'URL Cloud',
-            // Weitere Beschreibungen können aus descriptions.js hinzugefügt werden
+            'mcapacity' => '[m³x°dH] Capacity figure',
+            'mcountreg' => 'regeneration counter',
+            'mcountwater1' => '[l] Soft water exchanger 1',
+            'mcountwater2' => '[l] Soft water exchanger 2',
+            'mcountwatertank' => '[l] Make-up water volume',
+            'mcurrent' => '[mA] Chlorine current',
+            'mendreg1' => '[hh:mm] Last regeneration Exchanger 1',
+            'mendreg2' => '[hh:mm] Last regeneration Exchanger 2',
+            'mflow1' => '[m³/h] Flow rate exch. 1',
+            'mflow2' => '[m³/h] Flow rate exch. 2',
+            'mflowblend' => '[m³/h] Blending flow rate',
+            'mflowexc' => '[Min] during',
+            'mflowexc1reg2' => '[Min]',
+            'mflowexc2reg1' => '[Min]',
+            'mflowmax' => '[m³/h] Flow rate peak value',
+            'mflowmax1reg2' => '[m³/h] Exchanger 1 peak value',
+            'mflowmax2reg1' => '[m³/h] Exchanger 2 peak value',
+            'mflowreg1' => '[l/h] Regeneration flow rate Exchanger 1',
+            'mflowreg2' => '[l/h] Regeneration flow rate Exchanger 2',
+            'mhardsoftw' => '[°dh] Actual value soft water hardness',
+            'mlifeadsorb' => '[%] Adsorber exhausted by',
+            'mmaint' => '[d] Perform maintenance in',
+            'mregpercent1' => '[%]',
+            'mregpercent2' => '[%]',
+            'mregstatus' => 'Regeneration step',
+            'mremregstep' => 'Remaining amount / time of current regeneration step',
+            'mrescapa1' => '[m³] Soft water Exchanger 1',
+            'mrescapa2' => '[m³] Soft water Exchanger 2',
+            'mresidcap1' => '[%] Residual capacity 1',
+            'mresidcap2' => '[%] Residual capacity 2',
+            'mreswatadmod' => '[m³] Adsorber remaining amount of water',
+            'msaltrange' => '[d] Salt-reach',
+            'msaltusage' => '[kg] salt consumption',
+            'mstep1' => 'Step indication regeneration valve 1',
+            'mstep2' => 'Step indication regeneration valve 2',
+            'pbackwash' => '[l] Backwash',
+            'pbuzzer' => 'Audio signal',
+            'pbuzzfrom' => '[hh:mm] Audio signal release from',
+            'pbuzzto' => '[hh:mm] Audio signal release until',
+            'pcfcontact' => 'Function fault signal contact',
+            'pclearcntreg' => 'Reset regeneration counter',
+            'pclearcntwater' => 'Reset water meter',
+            'pclearerrmem' => 'Delete error memory',
+            'pcurrent' => '[mA] Setpoint current',
+            'pdate' => '[yyyy.mm.dd] Current date',
+            'pdlstauto' => 'Switch-over DST to ST',
+            'pforcedregdist' => '[d] Interval of forced regeneration',
+            'pfreqblendvalve' => '[Hz] End frequency blending valve',
+            'pfreqregvalve' => '[Hz] End frequency regeneration valve',
+            'phunit' => 'Hardness unit',
+            'pknx' => 'KNX connection',
+            'planguage' => 'Current language',
+            'pled' => 'Illuminated LED ring',
+            'pledatsaltpre' => 'Illuminated LED ring flashes on signal',
+            'pledbright' => '[%] Brightness',
+            'pload' => '[mAMin] Charge',
+            'pmailadress' => '',
+            'pmaintint' => '[d] Maintenance interval',
+            'pmaxdurdisinfect' => '[Min] Longest switch-on time Cl cell',
+            'pmaxresdurreg' => '[Min] Max Remaining time regeneration',
+            'pmaxvolmaxcap' => '[l] Max. filling volume largest cap',
+            'pmaxvolmincap' => '[l] Max. filling volume smallest cap',
+            'pminvolmaxcap' => '[l] Min. filling volume largest cap',
+            'pminvolmincap' => '[l] Min. filling volume smallest cap',
+            'pmode' => '',
+            'pmodedesinf' => 'Activate/deactivate chlorine cell',
+            'pmodefr' => 'Indiv. Operating mode Friday',
+            'pmodemo' => 'Indiv. Operating mode Monday',
+            'pmodesa' => 'Indiv. Operating mode Saturday',
+            'pmodesu' => 'Indiv. Operating mode Sunday',
+            'pmodeth' => 'Indiv. Operating mode Thursday',
+            'pmodetu' => 'Indiv. Operating mode Tuesday',
+            'pmodewe' => 'Indiv. Operating mode Wednesday',
+            'pmonblend' => 'Blending monitoring',
+            'pmondisinf' => 'Disinfection monitoring',
+            'pmonflow' => 'Monitoring of nominal flow',
+            'pmonregmeter' => '[Min] Regeneration monitoring time',
+            'pmonsalting' => '[Min] Salting monitoring time',
+            'pname' => 'Name',
+            'pnomflow' => '[m³/h] Nominal flow rate',
+            'pntpsync' => 'Get date/time automatically (NTP)',
+            'poverload' => 'System overloaded',
+            'ppowerfail' => 'Reaction to power failure > 5 min',
+            'pprateblending' => '[l/Imp] Blending water meter pulse rate',
+            'pprateregwater' => '[l/Imp] Regeneration water meter pulse rate',
+            'ppratesoftwater' => '[l/Imp] Soft water meter pulse rate',
+            'pprogin' => 'Programmable input function',
+            'pprogout' => 'Programmable output function',
+            'prawhard' => '[°dH] Raw water hardness',
+            'pregmo1' => '[hh:mm] Define time of regeneration 1',
+            'pregmo2' => '[hh:mm] Define time of regeneration 2',
+            'pregmo3' => '[hh:mm] Define time of regeneration 3',
+            'pregmode' => 'Time of regeneration',
+            'prescaplimit' => '[%] Residual capacity limit value',
+            'prinsing' => '[Min] Slow rinse',
+            'psetcapfr' => '[m³x°dH] Capacity figure Friday',
+            'psetcapmo' => '[m³x°dH] Capacity figure Monday',
+            'psetcapsa' => '[m³x°dH] Capacity figure Saturday',
+            'psetcapsu' => '[m³x°dH] Capacity figure Sunday',
+            'psetcapth' => '[m³x°dH] Capacity figure Thursday',
+            'psetcaptu' => '[m³x°dH] Capacity figure Tuesday',
+            'psetcapwe' => '[m³x°dH] Capacity figure Wednesday',
+            'psetsoft' => '[°dH] Setpoint of soft water hardness',
+            'ptelnr' => 'Tel. no.',
+            'ptime' => '[hh:mm] Current time',
+            'pvolume' => '[m³] Adsorber treatment volume',
+            'pwashingout' => '[l] Washing out',
         ];
     }
     
@@ -494,9 +601,8 @@ class PHPGruenbeck {
         
         // Check for error in the redirect URL
         if ($this->checkForError($location)) {
-            // Versuchen Sie einen alternativen Login-Ansatz
-            $this->logInfo("Standard-Login fehlgeschlagen, versuche alternativen Ansatz");
-            return $this->alternativeLogin();
+            $this->logError("Login fehlgeschlagen: Fehler in der Redirect-URL");
+            return false;
         }
         
         // Versuchen Sie verschiedene Muster, um den Code zu extrahieren
@@ -624,95 +730,6 @@ class PHPGruenbeck {
             return true;
         }
         
-        return false;
-    }
-    
-    /**
-     * Ein alternativer Login-Ansatz für die Gruenbeck API
-     * 
-     * Einige APIs erfordern einen anderen Ansatz, besonders wenn die Standard-OAuth-Flows
-     * nicht wie erwartet funktionieren. Diese Methode versucht einen alternativen Ansatz.
-     * 
-     * @return bool Erfolg
-     */
-    public function alternativeLogin() {
-        $this->logInfo('Starte alternativen Login-Prozess');
-        
-        // Code Challenge für PKCE generieren
-        list($code_verifier, $codeChallenge) = $this->getCodeChallenge();
-        
-        // Direkter Ansatz zur Token-Generierung mit Client Credentials
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL, 'https://gruenbeckb2c.b2clogin.com/a50d35c1-202f-4da7-aa87-76e51a3098c6/oauth2/v2.0/token');
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query([
-            'client_id' => '5a83cc16-ffb1-42e9-9859-9fbf07f36df8',
-            'scope' => 'https://gruenbeckb2c.onmicrosoft.com/iot/user_impersonation',
-            'client_secret' => '', // Die App verwendet möglicherweise kein Client Secret
-            'grant_type' => 'password',
-            'username' => $this->username,
-            'password' => $this->password
-        ]));
-        curl_setopt($ch, CURLOPT_HTTPHEADER, [
-            'Content-Type: application/x-www-form-urlencoded',
-            'Accept: application/json',
-            'User-Agent: ' . $this->userAgent
-        ]);
-        
-        $response = curl_exec($ch);
-        $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
-        
-        $this->logDebug("Alternative Login Antwort Code: $httpCode");
-        $this->logDebug("Alternative Login Antwort: " . substr($response, 0, 300));
-        
-        $data = json_decode($response, true);
-        
-        // Wenn dieser Ansatz fehlschlägt, versuchen Sie einen anderen Ansatz (z.B. ROPC)
-        if ($httpCode !== 200 || !isset($data['access_token'])) {
-            $this->logInfo("Alternativer Login fehlgeschlagen, versuche Resource Owner Password Credentials Grant");
-            
-            // ROPC Flow - wird normalerweise nicht empfohlen, könnte aber in diesem Fall funktionieren
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, 'https://gruenbeckb2c.b2clogin.com/a50d35c1-202f-4da7-aa87-76e51a3098c6/B2C_1A_SignInUp/oauth2/v2.0/token');
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($ch, CURLOPT_POST, true);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query([
-                'client_id' => '5a83cc16-ffb1-42e9-9859-9fbf07f36df8',
-                'response_type' => 'token',
-                'grant_type' => 'password',
-                'scope' => 'openid 5a83cc16-ffb1-42e9-9859-9fbf07f36df8 offline_access',
-                'username' => $this->username,
-                'password' => $this->password
-            ]));
-            curl_setopt($ch, CURLOPT_HTTPHEADER, [
-                'Content-Type: application/x-www-form-urlencoded',
-                'Accept: application/json',
-                'User-Agent: ' . $this->userAgent
-            ]);
-            
-            $response = curl_exec($ch);
-            $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-            curl_close($ch);
-            
-            $this->logDebug("ROPC Antwort Code: $httpCode");
-            $this->logDebug("ROPC Antwort: " . substr($response, 0, 300));
-            
-            $data = json_decode($response, true);
-        }
-        
-        if ($httpCode === 200 && isset($data['access_token'])) {
-            $this->accessToken = $data['access_token'];
-            if (isset($data['refresh_token'])) {
-                $this->refreshToken = $data['refresh_token'];
-            }
-            
-            $this->logInfo("Alternativer Login erfolgreich");
-            return true;
-        }
-        
-        $this->logError("Alle Login-Versuche fehlgeschlagen");
         return false;
     }
     
