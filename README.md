@@ -3,7 +3,7 @@
 PHPGruenbeck ist eine PHP-Bibliothek für den Zugriff auf die Gruenbeck Cloud API. Sie ermöglicht die Abfrage von Gerätedaten, Parametern und Messwerten von Gruenbeck Wasserenthärtungsanlagen über die myGruenbeck-Cloud.
 
 ## Version
-1.3
+1.4
 
 ## Funktionen
 
@@ -256,6 +256,16 @@ Gibt die Beschreibung für einen Parameter zurück.
 - `'parameters'`: Geräteparameter und Einstellungen
 - `'measurements/water'`: Wasserverbrauchsdaten
 - `'measurements/salt'`: Salzverbrauchsdaten
+
+## Verfügbare Parameter-Beschreibungen
+
+Die Klasse enthält Beschreibungen für alle möglichen Parameter, die von der API zurückgegeben werden können. Diese umfassen:
+
+- Geräteinformationen (mit `i` beginnend): Seriennummer, Hardware-Version, Softwareversion, etc.
+- Messwerte (mit `m` beginnend): Kapazität, Durchflussraten, Salzverbrauch, etc.
+- Parameter (mit `p` beginnend): Einstellbare Werte wie Wasserhärte, Regenerationszeiten, etc.
+
+Die vollständige Liste ist in der Methode `loadDescriptions()` implementiert und kann über `getDescription($key)` abgerufen werden.
 
 ## Fehlerbehandlung
 
